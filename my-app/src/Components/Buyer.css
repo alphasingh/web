@@ -1,0 +1,60 @@
+body{
+    background-color: #282c34;
+}
+
+  .heading {
+    color: #fff;
+    text-align: center;
+    font-family: Arial;
+    font-size: 1.5cm;
+    padding: 20px;
+  }
+
+  button{
+    color: black;
+    font-size: 16px;
+    border-radius: 4px;
+    text-align: center;
+    float: center;
+  }
+  label {
+    color: white;
+    font-size: 16px;
+    font-family: Arial;
+    margin-left: 100px;
+    width: 100px;
+    display: inline-block;
+  }
+  
+  
+  .cinput {
+    font-size: 16px;
+    font-family: Arial;
+    padding: 0.25em 0.5em;
+    background-color: #fff;
+    border: 3px solid  #32a1ce;
+    width: 150px;
+    display: inline-block;
+}
+  .centerblock{
+      color: #fff;
+      text-align: center;
+  }
+  .menudisplay{
+    background-color: lightgrey;
+    width: 300px;
+    border: 10px solid white;
+    padding: 100px;
+    text-align: center;
+    float: right;
+    margin-top: 75px;
+    margin-right: 100px;
+  }
+  .form-control {
+    margin-bottom: 1px;
+}
+
+.error {
+    color: red;
+    margin-left: 250px;
+}
