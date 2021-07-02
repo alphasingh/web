@@ -45,6 +45,12 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeReviewCard(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
+    const sellerid =props.sellerid
+    const sellername = props.sellername
+    const imageOfSeller = props.sellerimg;
+    //console.log(props.sellerid)
+    //console.log(props.sellername)
+
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -82,7 +88,10 @@ export default function RecipeReviewCard(props) {
                     3D
                 </Button>
                 <Button variant="contained" color="primary">
-                    <Link to="/buyerinfo" className="btn btn-primary">Subscribe Now</Link>
+                <Link to={{
+                        pathname: "/buyerinfo",
+                        data: { seller_id: sellerid, seller_name: sellername, sellerphoto:imageOfSeller, description: props.data.description, planname: props.data.name, planprice:props.data.price }
+                      }} className="btn btn-primary">Subscribe Now</Link>
                 </Button>
             </CardActions>
         </Card>

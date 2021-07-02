@@ -4,8 +4,10 @@ import { useFormik } from 'formik';
 import './Buyer.css';
 
 
-export default function App() {
+export default function App(props) {
   const url = "https://tiffin-umbrella.herokuapp.com/post_buyer";
+  console.log(props.location.data)
+  const sellerinfo= props.location.data
 
   const formik = useFormik({
     initialValues: {
@@ -89,7 +91,48 @@ export default function App() {
 
     <div>
       <hr /><hr /><hr />
-      <div className='p'>Here the Buyers order will be displayed!!</div>
+      {/* <div className='p'>Here the Buyers order will be displayed!!</div> */}
+      {/* <div className='p' >
+         <div className="responsive">
+         <div className="gallery">
+       <a target="_blank" ><img src=" https://i.ibb.co/k1x404S/chinese-img1.jpg" width="600" height="400"></img></a>
+   
+         </div>
+       </div>
+    </div> */}
+
+
+             <div className="container-fluid" >
+            <div className="row">
+              
+                <div className="col-sm-4 w" >
+                  <div className="card mt-4">
+                    <img className="card-img-top"  src={sellerinfo.sellerphoto} alt="" />
+                    <div className="card-body">
+                      <h4 className="card-title text-secondary">{sellerinfo.seller_name}</h4>
+                      <p className="card-text text-secondary"><h6><strong>Plan Name :</strong> {sellerinfo.planname}</h6></p>
+                      <p className="card-text text-secondary">{sellerinfo.description}</p>
+                      <p className="card-text text-secondary" ><h6><strong>Plan Price :</strong></h6>{sellerinfo.planprice}</p>
+                      {/* <p className="card-text text-secondary" type="hidden" value={sellerinfo.id}></p> */}
+                    </div>
+                    <div className="card-footer" >
+                    </div>
+                  </div>
+                </div>
+
+            
+
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
 
       <div className="inner">
 

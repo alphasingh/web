@@ -112,6 +112,9 @@ export default function FullWidthTabs(props) {
   const idofseller = props.location.data
   //console.log(idofseller.seller_id)
   const idtest =idofseller.seller_id
+  const seller_name = idofseller.seller_name
+  const sellerimage = idofseller.sellerimage
+  //console.log(idofseller.seller_name)
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -174,7 +177,7 @@ const [plan, setPlan]= useState([]);
               <Grid item xs={12} md={4} lg={4} sm={4}>
           {console.log("iotem===>",item)}
           <Card
-              data={item}/>
+              data={item} sellerid={idtest} sellername={seller_name} sellerimg={sellerimage}/>
       </Grid>}
            </>  
             )

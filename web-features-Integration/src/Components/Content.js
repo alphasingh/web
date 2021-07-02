@@ -225,7 +225,7 @@ function Content() {
 
                       <Link to={{
                         pathname: "/plans",
-                        data: { seller_id: seller.id }
+                        data: { seller_id: seller.id, seller_name: seller.name, sellerimage:seller.imageUrl }
                       }} className="btn btn-primary" onClick={() => passIdToNext(seller.id)}>Find Out More!</Link>
                     </div>
                   </div>
