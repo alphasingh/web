@@ -107,7 +107,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FullWidthTabs() {
+export default function FullWidthTabs(props) {
+  //console.log(props.location.data)
+  const idofseller = props.location.data
+  //console.log(idofseller.seller_id)
+  const idtest =idofseller.seller_id
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -125,7 +129,7 @@ const [plan, setPlan]= useState([]);
   useEffect(()=>{
      let fetchData = async()=> {
         
-        const request = await axios.get('https://tiffin-umbrella.herokuapp.com/get_plans?id=60c9002a9b10225a73918e73')
+        const request = await axios.get('https://tiffin-umbrella.herokuapp.com/get_plans?id='+idtest)
         .then(res => {
           console.log("response==>",res)
           setPlan(res.data)
