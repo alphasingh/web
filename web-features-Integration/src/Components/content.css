@@ -32,6 +32,9 @@
   transform: translate(-50%, -50%);
  
 }
+.filterdesign{
+  margin-left: 22px;
+}
 .box{
   border:3px; 
   border-style:solid; 

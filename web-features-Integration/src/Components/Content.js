@@ -204,7 +204,7 @@ function Content() {
               </div>
             </form>
           </FormControl>
-          <button className="btn btn-primary" onClick={filterResults}>Apply Filter</button>
+          <button className="btn btn-primary filterdesign" onClick={filterResults}>Apply Filter</button>
           <div className="container-fluid" >
             <div className="row">
               {seller.map(seller => (
@@ -220,9 +220,6 @@ function Content() {
                       <p className="card-text text-secondary" type="hidden" value={seller.id}></p>
                     </div>
                     <div className="card-footer" >
-                      {/* <a href="/plans" className="btn btn-primary">Find Out More!</a> */}
-                      {/* <FullWidthTabs name="sahil"></FullWidthTabs> */}
-
                       <Link to={{
                         pathname: "/plans",
                         data: { seller_id: seller.id, seller_name: seller.name, sellerimage:seller.imageUrl }
@@ -255,18 +252,8 @@ function Content() {
 
             </div>
           </section>
-
-
-
-
         </div>
       </section>
-
-
-
-
-
-
     </div>
   );
 }

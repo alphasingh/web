@@ -15,7 +15,16 @@
     padding: 8px;
     justify-content: flex-end;
 }
-
+.btnstyle{
+    color: beige;
+    text-decoration: 'none';
+    margin-right: 30px;
+    
+}
+.btnstyle:hover{
+    cursor: pointer;
+    color:beige
+}
 .Description-text{
     white-space: nowrap; 
     width: 50px; 

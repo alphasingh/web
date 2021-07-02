@@ -249,7 +249,7 @@ const [plan, setPlan]= useState([]);
           )}
           </Grid>
         </TabPanel>
-        <hr /> <hr /> <hr /> <hr /> <hr /> <hr /> <hr /> <hr />
+        <hr /> <hr /> <hr /> <hr /> <hr /> <hr /> <hr /> <hr /><hr/>
     </div>
     
   );

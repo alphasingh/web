@@ -81,9 +81,9 @@ export default function RecipeReviewCard(props) {
             </CardContent>
             <CardActions>
                 <Button
-                    className={classes.secondaryCardButton}
+                    className="btnstyle"
                     color="primary"
-                    variant="outlined"
+                    variant="contained"
                     onClick={() => openLinkInNewTab(props.data.modelUrl)}>
                     3D
                 </Button>
@@ -91,7 +91,7 @@ export default function RecipeReviewCard(props) {
                 <Link to={{
                         pathname: "/buyerinfo",
                         data: { seller_id: sellerid, seller_name: sellername, sellerphoto:imageOfSeller, description: props.data.description, planname: props.data.name, planprice:props.data.price }
-                      }} className="btn btn-primary">Subscribe Now</Link>
+                      }} style={{color: "beige", textDecoration: 'none'}}>Subscribe Now</Link>
                 </Button>
             </CardActions>
         </Card>
