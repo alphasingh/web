@@ -114,6 +114,16 @@ export default function FullWidthTabs(props) {
   const idtest =idofseller.seller_id
   const seller_name = idofseller.seller_name
   const sellerimage = idofseller.sellerimage
+  const plan_type = idofseller.plan_type
+  const planid = idofseller.planid
+  const s_id = idofseller.s_id
+  const buyer_id = idofseller.buyer_id
+
+  console.log(planid)
+  console.log(s_id)
+  console.log(buyer_id)
+  console.log(idtest);
+  //console.log(plan_type)
   //console.log(idofseller.seller_name)
   const classes = useStyles();
   const theme = useTheme();
@@ -177,7 +187,7 @@ const [plan, setPlan]= useState([]);
               <Grid item xs={12} md={4} lg={4} sm={4}>
           {console.log("iotem===>",item)}
           <Card
-              data={item} sellerid={idtest} sellername={seller_name} sellerimg={sellerimage}/>
+              data={item} sellerid={idtest} sellername={seller_name} sellerimg={sellerimage} plantype={plan_type} />
       </Grid>}
            </>  
             )
@@ -209,7 +219,7 @@ const [plan, setPlan]= useState([]);
               <Grid item xs={12} md={4} lg={4} sm={4}>
           {console.log("iotem===>",item)}
           <Card
-              data={item}/>
+              data={item} sellerid={idtest} sellername={seller_name} sellerimg={sellerimage} plantype={plan_type} />
       </Grid>}
            </>  
             )
@@ -240,7 +250,7 @@ const [plan, setPlan]= useState([]);
               <Grid item xs={12} md={4} lg={4} sm={4}>
           {console.log("iotem===>",item)}
           <Card
-              data={item}/>
+              data={item} sellerid={idtest} sellername={seller_name} sellerimg={sellerimage} plantype={plan_type}/>
       </Grid>}
            </>  
             )

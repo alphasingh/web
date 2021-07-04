@@ -8,6 +8,9 @@ export default function App(props) {
   const url = "https://tiffin-umbrella.herokuapp.com/post_buyer";
   console.log(props.location.data)
   const sellerinfo = props.location.data
+  //console.log(sellerinfo.plan_type)
+  console.log(sellerinfo.seller_id)
+  console.log(sellerinfo.plan_id)
 
   const formik = useFormik({
     initialValues: {
@@ -32,14 +35,18 @@ export default function App(props) {
           address: {
             line1: values.address,
             area: values.area,
-            zip: values.zip
-          }
-        }
+            zip: values.zip,  
+          } 
+        },
+        sellerid: sellerinfo.seller_id,
+        planid: sellerinfo.plan_id   
       };
 
       Axios.post(url, postData, { headers: { 'Content-Type': 'application/json' } })
         .then(res => { console.log(res.values) })
         .catch(errors => { console.log(errors) })
+
+      alert("Thank you for using Tiffin Umbrella!!");
 
     },
 
@@ -111,10 +118,13 @@ export default function App(props) {
 
                 <img className="card-img-top" src={sellerinfo.sellerphoto} alt="" />
                 <div className="card-body">
+          
                   <h4 className="card-title text-secondary">{sellerinfo.seller_name}</h4>
+                  <p className="card-text text-secondary"><h6><strong>Plan Type :</strong> {sellerinfo.plan_type}</h6></p>
                   <p className="card-text text-secondary"><h6><strong>Plan Name :</strong> {sellerinfo.planname}</h6></p>
                   <p className="card-text text-secondary">{sellerinfo.description}</p>
                   <p className="card-text text-secondary" ><h6><strong>Plan Price :</strong>{sellerinfo.planprice}$</h6></p>
+
                   {/* <p className="card-text text-secondary" type="hidden" value={sellerinfo.id}></p> */}
                 </div>
 

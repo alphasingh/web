@@ -48,6 +48,9 @@ export default function RecipeReviewCard(props) {
     const sellerid =props.sellerid
     const sellername = props.sellername
     const imageOfSeller = props.sellerimg;
+   
+    console.log(props.data.plan_id)
+    //console.log(props.data.type)
     //console.log(props.sellerid)
     //console.log(props.sellername)
 
@@ -90,7 +93,7 @@ export default function RecipeReviewCard(props) {
                 <Button variant="contained" color="primary">
                 <Link to={{
                         pathname: "/buyerinfo",
-                        data: { seller_id: sellerid, seller_name: sellername, sellerphoto:imageOfSeller, description: props.data.description, planname: props.data.name, planprice:props.data.price }
+                        data: { seller_id: sellerid, seller_name: sellername, sellerphoto:imageOfSeller, description: props.data.description, planname: props.data.name, planprice:props.data.price, plan_type: props.data.type, plan_id: props.data.id}
                       }} style={{color: "beige", textDecoration: 'none'}}>Subscribe Now</Link>
                 </Button>
             </CardActions>

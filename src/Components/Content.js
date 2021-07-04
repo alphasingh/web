@@ -26,6 +26,8 @@ function Content() {
 
   }, [url]);
 
+  
+
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
@@ -79,6 +81,7 @@ function Content() {
     });
     return v;
   }
+  console.log(seller.type)
   async function filterResults() {
 
     const url = 'https://tiffin-umbrella.herokuapp.com/get_seller_list';
@@ -95,9 +98,12 @@ function Content() {
     setSeller(apiResponse.data)
     //console.log(apiResponse);
     //console.log(apiResponse.data);
-
+    
 
   }
+
+ 
+
   return (
 
     <div>
@@ -222,7 +228,7 @@ function Content() {
                     <div className="card-footer" >
                       <Link to={{
                         pathname: "/plans",
-                        data: { seller_id: seller.id, seller_name: seller.name, sellerimage:seller.imageUrl }
+                        data: { seller_id: seller.id, seller_name: seller.name, sellerimage:seller.imageUrl, plan_type: seller.type, planid: seller.plan_id, s_id: seller.seller_id, buyer_id: seller.buyer_id}
                       }} className="btn btn-primary" onClick={() => passIdToNext(seller.id)}>Find Out More!</Link>
                     </div>
                   </div>
