@@ -8,7 +8,9 @@ export default function App(props) {
   const url = "https://tiffin-umbrella.herokuapp.com/post_buyer";
   console.log(props.location.data)
   const sellerinfo = props.location.data
-
+  // const seller_id = sellerinfo.seller_id
+  // const plan_id = sellerinfo.planid  
+  
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -20,7 +22,7 @@ export default function App(props) {
       zip: ''
     },
 
-    onSubmit: (values, onSubmitProps) => {
+    onSubmit: (values, onSubmitProps, seller_id, plan_id) => {
       console.log('Form data', values)
       onSubmitProps.resetForm()
       const postData = {
@@ -34,11 +36,14 @@ export default function App(props) {
             area: values.area,
             zip: values.zip
           }
-        }
+        },
+        seller_id:sellerinfo.seller_id,
+        plan_id: sellerinfo.planid
+        
       };
 
       Axios.post(url, postData, { headers: { 'Content-Type': 'application/json' } })
-        .then(res => { console.log(res.values) })
+        .then(res => { if(res.status === 200) {console.log("Success"); alert("Your Order is placed successfully, please check your email.") }})
         .catch(errors => { console.log(errors) })
 
     },
@@ -86,11 +91,11 @@ export default function App(props) {
       return errors
     }
   })
-
+  
   return (
 
     <div>
-      <hr /><hr /><hr />
+     
       {/* <div className='p'>Here the Buyers order will be displayed!!</div> */}
       {/* <div className='p' >
          <div className="responsive">
@@ -113,6 +118,7 @@ export default function App(props) {
                 <div className="card-body">
                   <h4 className="card-title text-secondary">{sellerinfo.seller_name}</h4>
                   <p className="card-text text-secondary"><h6><strong>Plan Name :</strong> {sellerinfo.planname}</h6></p>
+                  <p className="card-text text-secondary"><h6><strong>Plan Type :</strong> {sellerinfo.plantype}</h6></p>
                   <p className="card-text text-secondary">{sellerinfo.description}</p>
                   <p className="card-text text-secondary" ><h6><strong>Plan Price :</strong>{sellerinfo.planprice}$</h6></p>
                   {/* <p className="card-text text-secondary" type="hidden" value={sellerinfo.id}></p> */}
@@ -258,7 +264,19 @@ export default function App(props) {
 
         </div>
       </div>
-      <hr /><hr /><hr /><hr />
+      <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+         <br></br> 
+        <br></br>
+        <br></br>
+        <br></br>
+
+     
     </div>
 
   );

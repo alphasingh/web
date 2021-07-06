@@ -177,7 +177,7 @@ const [plan, setPlan]= useState([]);
               <Grid item xs={12} md={4} lg={4} sm={4}>
           {console.log("iotem===>",item)}
           <Card
-              data={item} sellerid={idtest} sellername={seller_name} sellerimg={sellerimage}/>
+              data={item} sellerid={idtest} sellername={seller_name} sellerimg={sellerimage} planid={item.id}/>
       </Grid>}
            </>  
             )
@@ -209,7 +209,7 @@ const [plan, setPlan]= useState([]);
               <Grid item xs={12} md={4} lg={4} sm={4}>
           {console.log("iotem===>",item)}
           <Card
-              data={item}/>
+             data={item} sellerid={idtest} sellername={seller_name} sellerimg={sellerimage} planid={item.id}/>
       </Grid>}
            </>  
             )
@@ -240,7 +240,7 @@ const [plan, setPlan]= useState([]);
               <Grid item xs={12} md={4} lg={4} sm={4}>
           {console.log("iotem===>",item)}
           <Card
-              data={item}/>
+              data={item} sellerid={idtest} sellername={seller_name} sellerimg={sellerimage} planid={item.id}/>
       </Grid>}
            </>  
             )
@@ -249,7 +249,20 @@ const [plan, setPlan]= useState([]);
           )}
           </Grid>
         </TabPanel>
-        <hr /> <hr /> <hr /> <hr /> <hr /> <hr /> <hr /> <hr /><hr/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
     </div>
     
   );

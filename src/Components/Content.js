@@ -17,7 +17,7 @@ function Content() {
     let fetchData = async () => {
 
       const request = await axios.get(url);
-      //console.log(request.data.sellers);
+      console.log(request.data.sellers);
       setSeller(request.data);
       return request;
     }
