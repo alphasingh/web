@@ -1,6 +1,7 @@
 .error {
   color: red;
   margin-left: 125px;
+  font-weight: 100;
 }
 
 body {

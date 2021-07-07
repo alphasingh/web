@@ -43,7 +43,8 @@ export default function App(props) {
       };
 
       Axios.post(url, postData, { headers: { 'Content-Type': 'application/json' } })
-        .then(res => { if(res.status === 200) {console.log("Success"); alert("Your Order is placed successfully, please check your email.") }})
+        .then(res => { if(res.status === 200) {console.log("Success"); alert("Your Order is placed successfully, please check your email.");
+        window.location.href = "/"; }})
         .catch(errors => { console.log(errors) })
 
     },
@@ -61,31 +62,31 @@ export default function App(props) {
       }
 
       if (!values.email) {
-        errors.email = 'Required'
+        errors.email = 'Email ID is required'
       } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid'
+        errors.email = 'Email ID is not valid'
       }
 
       if (!values.phone) {
-        errors.phone = 'Required'
+        errors.phone = 'Phone number is required'
 
       } else if (!/([0-9])/.test(values.phone)) {
-        errors.phone = 'Invalid'
+        errors.phone = 'Only Numbers are allowed'
       }
 
       if (!values.address) {
-        errors.address = 'Required'
+        errors.address = 'Address is Required'
       }
 
       if (!values.area) {
-        errors.area = 'Required'
+        errors.area = 'Area name is Required'
       }
 
       if (!values.zip) {
-        errors.zip = 'Required'
+        errors.zip = 'Zip code is Required'
       }
-      else if (/([a-z])/.test(values.zip)) {
-        errors.zip = 'Invalid'
+      else if (/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(values.zip)) {
+        errors.zip = 'Zip code can only have Numbers and Letters'
       }
 
       return errors
@@ -241,6 +242,7 @@ export default function App(props) {
                 id='zip'
                 pattern="[A-Z0-9]{6}"
                 maxLength="6"
+                minLength="5"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.zip}

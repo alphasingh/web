@@ -108,12 +108,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function FullWidthTabs(props) {
+  
+  const[pageProps, setpageProps]=useState([props]);
+
+  useEffect(()=>{
+        setpageProps(JSON.parse(window.localStorage.getItem('pageProps')));
+  },[]);
+  
+  
+  useEffect(()=>{
+   window.localStorage.setItem('props',pageProps);
+  },[pageProps]);
+
   //console.log(props.location.data)
   const idofseller = props.location.data
   //console.log(idofseller.seller_id)
   const idtest =idofseller.seller_id
   const seller_name = idofseller.seller_name
   const sellerimage = idofseller.sellerimage
+
   //console.log(idofseller.seller_name)
   const classes = useStyles();
   const theme = useTheme();
