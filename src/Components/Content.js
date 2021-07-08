@@ -7,7 +7,7 @@ import { Route, Link } from "react-router-dom";
 import FormControl from '@material-ui/core/FormControl';
 
 
-var cuisines = []; // testing  
+var cuisines = [];  
 var category =[];
 function Content() {
   const [seller, setSeller] = useState([]);
@@ -79,6 +79,15 @@ function Content() {
     });
     return v;
   }
+  function status(st){
+    if ( st == "VERIFIED"){
+      return<img className="status" src={"https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/whatsapp/273/check-mark-button_2705.png"} alt="Logo"/>;
+    }
+    else{
+      return<img className="status" src={"https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/microsoft/209/cross-mark_274c.png"} alt="logo"/>;
+    }
+  }
+
   async function filterResults() {
 
     const url = 'https://tiffin-umbrella.herokuapp.com/get_seller_list';
@@ -212,7 +221,7 @@ function Content() {
                   <div className="card mt-4">
                     <img className="card-img-top" src={seller.imageUrl} alt="" />
                     <div className="card-body">
-                      <h4 className="card-title text-secondary">{seller.name}</h4>
+                      <h4 className="card-title text-secondary">{seller.name}&nbsp;{status(seller.status)}</h4>
                       <p className="card-text text-secondary">{truncate(seller?.description, 70)}</p>
                       <p className="card-text text-secondary"><h6><strong>Average price per person :</strong> ${seller.averagePricePerPerson}</h6></p>
                       <p className="card-text text-secondary" ><h6><strong>Categories available :</strong></h6> <h6 style={{ color: "red" }}> {preparations(seller.categories)}</h6></p>

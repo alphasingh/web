@@ -110,3 +110,7 @@ select, button {
 .icons-style{
   /* transform: scale(5.8); */
 }
+.status{
+  height: 20px;
+  width: 20px;
+}
