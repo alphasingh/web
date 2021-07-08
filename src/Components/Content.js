@@ -7,7 +7,7 @@ import { Route, Link } from "react-router-dom";
 import FormControl from '@material-ui/core/FormControl';
 
 
-var cuisines = [];
+var cuisines = []; // testing  
 var category =[];
 function Content() {
   const [seller, setSeller] = useState([]);
