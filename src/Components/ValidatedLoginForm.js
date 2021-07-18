@@ -80,13 +80,18 @@ const ValidatedLoginForm = () => (
       return (
         <div>
         <div className='t'>
-          <div>
+          
           <div className='p'>
             <form onSubmit={handleSubmit}>
               <h1 >Log-In Form</h1>
               <br />
-              <label htmlFor="email">Email</label>
-              <input
+
+          
+              <label>Email</label> 
+              
+
+              <div className="inp">
+              <input 
                 id="email"
                 name="email"
                 type="text"
@@ -94,14 +99,19 @@ const ValidatedLoginForm = () => (
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={errors.email && touched.email && "error"}
-              />
-              {errors.email && touched.email && (
-                <div className="input-feedback">{errors.email}</div>
-              )}
+                className={errors.email && touched.email }
+              /> </div>
+             
 
-              <label htmlFor="password">Password</label>
-              <input
+              {errors.email && touched.email && (
+                <div className="feedback">{errors.email}</div>
+              )} 
+             
+            
+              <label>Password</label> 
+              
+              <div className="inp">
+              <input 
                 id="password"
                 name="password"
                 type="password"
@@ -109,10 +119,11 @@ const ValidatedLoginForm = () => (
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={errors.password && touched.password && "error"}
-              />
+                className={errors.password && touched.password}
+              /> </div>
+              
               {errors.password && touched.password && (
-                <div className="input-feedback">{errors.password}</div>
+                <div className="feedback">{errors.password}</div>
               )}
 
 
@@ -134,7 +145,6 @@ const ValidatedLoginForm = () => (
             
           </div>
           
-        </div>
         <br></br>
         <br></br>
         <br></br>

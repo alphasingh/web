@@ -1,10 +1,4 @@
-/* body {
-    background:url('http://cdn.wallpapersafari.com/13/6/Mpsg2b.jpg');
-     background-color: rgb(219, 223, 223);
-    margin:0px;
-    font-family: 'Ubuntu', sans-serif;
-      
-  } */
+
 
   body {
     /*min-height: 100vh;
@@ -33,28 +27,21 @@
 
   }
   
-  label, input {
-    display: block;
-    width: 100%;
-  }
   
-  label {
-    margin-bottom: 5px;
-    height: 22px;
-  }
   
-  input {
+  .inp {
     margin-bottom: 20px;
     padding: 10px;
-    border-radius: 3px;
-    border: 1px solid #777;
+    /*border-radius: 5px;
+    border: 1px solid #777;*/
+    display: block;
+    width: 100%;
+    
   }
   
-  input.error {
-    border-color: red;
-  }
   
-  .input-feedback {
+  
+  .feedback {
     color: rgb(235, 54, 54);
     margin-top: -15px;
     font-size: 14px;

@@ -206,7 +206,7 @@ function Content() {
           </div>
           <FormControl>
             <form>
-            <div className="filterbox">
+           {/* <div className="filterbox"> */}
               <div class="multipleSelection">
                 
                 <div class="selectBox"
@@ -216,7 +216,7 @@ function Content() {
                   </select> 
                   <div class="overSelect"></div>
                 </div>
-                </div>
+                
 
                 <div id="checkBoxes">
                   <label for="first">
@@ -228,10 +228,12 @@ function Content() {
                     <input type="checkbox" value="NON_VEG" id="NON_VEG" onClick={() => handleFilterCategories("NON_VEG")} />
                     &nbsp; NON-VEG
                   </label>
+                  
                   <label for="third">
                     <input type="checkbox" value="GUJARATI" id="GUJARATI" onClick={() => handleFilterClick("GUJARATI")} />
                     &nbsp; GUJARATI
                   </label>
+                  
                   <label for="fourth">
                     <input type="checkbox" id="PUNJABI" value="PUNJABI" onClick={() => handleFilterClick("PUNJABI")} />
                     &nbsp; PUNJABI
@@ -242,8 +244,10 @@ function Content() {
                   </label>
                 </div>
               </div>
+              
             </form>
           </FormControl>
+          
           <button className="btn btn-primary filterdesign" onClick={filterResults}>Apply Filter</button>
           <div className="container-fluid" >
             <div className="row">
