@@ -7,10 +7,11 @@ import Gallery from './Components/Gallery';
 import {Route, Switch, Link, BrowserRouter} from "react-router-dom";
 import Buyer from './Components/BuyerInfo';
 import Plans from './Components/Plans';
-import SellerLogin from './Components/ValidatedLoginForm';
-
-
-
+import ValidatedLoginForm from './Components/ValidatedLoginForm';
+import SellerDashboard from './Components/SellerDashboard';
+import ViewSellerOrders from './Components/ViewSellerOrders';
+import SignUp from './Components/Sign_Up';
+import AddPlan from './Components/AddPlan';
 function App() {
   return (
 
@@ -24,7 +25,12 @@ function App() {
                    <Route exact path='/gallery' component={Gallery}/>
                    <Route path="/buyerinfo" component={Buyer}/>
                    <Route path="/plans" component={Plans}/>
-                   <Route path="/sellerlogin" component={SellerLogin}/>
+                   <Route path="/sellerlogin" component={ValidatedLoginForm}/>
+                   <Route path="/sellerdashboard" component={SellerDashboard}/>
+                   <Route path="/viewsellerorders" component={ViewSellerOrders}/>
+                   <Route path="/signup" component={SignUp}/>
+                   <Route path="/addplan" component={AddPlan}/>
+                   
 
               </Switch>
           <Footer/>

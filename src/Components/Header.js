@@ -27,7 +27,9 @@ function Header() {
                   <li className="nav-item">
                   <Link to="/" className="nav-link">Gallery<span className="sr-only">(current)</span></Link>
                   </li>
-                  
+                  <li className="nav-item">
+                  <Link to="/sellerlogin" className="nav-link">Login<span className="sr-only">(current)</span></Link>
+                  </li>
 
                 </ul>
                 
