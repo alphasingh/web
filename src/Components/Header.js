@@ -28,7 +28,10 @@ function Header() {
                   <Link to="/" className="nav-link">Gallery<span className="sr-only">(current)</span></Link>
                   </li>
                   <li className="nav-item">
-                  <Link to="/sellerlogin" className="nav-link">Login<span className="sr-only">(current)</span></Link>
+                  <Link to="/sellerlogin" className="nav-link login">Login<span className="sr-only">(current)</span></Link>
+                  </li>
+                  <li className="nav-item">
+                  <Link to="/signup" className="nav-link login">Sign Up as a Tiffin Provider<span className="sr-only">(current)</span></Link>
                   </li>
 
                 </ul>

@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import { useField } from 'formik';
 import './AddPlan.css';
 import CustomSelect from './CustomSelect';
-
+import FormData from 'form-data';
 
 const options =[
   {value:'WEEKLY', label: 'WEEKLY'},
@@ -14,54 +14,60 @@ const options =[
 
 export default function App(props) {
 
-  // const[image, setImage]= useState();
+  const[imageUrl, setImageUrl]= useState();
+  const[modelUrl, setModelUrl] = useState();
   const url = " https://tiffin-umbrella.herokuapp.com/sellers/60db667a8247d42edb05cbae/plans";
-    const handleFile = async (e) => {
 
-    const file = document.getElementsByName("file");
 
-    var reader = new FileReader();
-    var fileByteArray = [];
-    reader.readAsArrayBuffer(e.target.files[0]);
-    reader.onloadend = function (evt) {
-        if (evt.target.readyState == FileReader.DONE) {
-           var arrayBuffer = evt.target.result,
-               array = new Uint8Array(arrayBuffer);
-           for (var i = 0; i < array.length; i++) {
-               fileByteArray.push(array[i]);
-            }
-        }
-        console.log(typeof fileByteArray);
-    }
-    await Axios.post("https://api.imgur.com/3/image", fileByteArray,  { headers: { 'Content-Type': 'multipart/form-data', 'Authorization':'Client-ID 2f7124444928e3e' }})
+  const handleImage = async (e) => {
+    var image = new FormData();
+    var imagefile =  e.target.files[0];
+    var comment = "This is a Image comment";
+   image.append("image", imagefile);
+    await Axios.post("https://tiffin-umbrella.herokuapp.com/images?comment="+comment, image,  { headers: { 'Content-Type': 'multipart/form-data' }}) //'Authorization':'Client-ID 2f7124444928e3e'
     .then(res => { if(res.status === 200){
-      console.log("Success!!");
-      console.log(res.data.link);
+      console.log("Received Image url", res.data.url);
+      setImageUrl(res.data.url);
     }
     })}
+
+    const handleModel = async (e) => {
+      var image = new FormData();
+      var imagefile =  e.target.files[0];
+      var comment = "This is a Model comment";
+     image.append("image", imagefile);
+      await Axios.post("https://tiffin-umbrella.herokuapp.com/images?comment="+comment, image,  { headers: { 'Content-Type': 'multipart/form-data' }}) //'Authorization':'Client-ID 2f7124444928e3e'
+      .then(res => { if(res.status === 200){
+        console.log("Received Model url", res.data.url);
+        setModelUrl(res.data.url);
+      }
+      })}
+
   const formik = useFormik({
     initialValues: {
       planType: '',
       planName: '',
       planDescription: '',
       planPrice: '',
-      imageUrl: '',
-      modelUrl:''
+      imageUrl: imageUrl,
+      modelUrl: modelUrl
       // file: ''
     },
 
     onSubmit: (values, onSubmitProps) => {
       console.log('Form data', values)
+      console.log('Image URL', imageUrl)
+      const image_api_url= imageUrl
+      const model_api_url= modelUrl
+      console.log('Model URL', modelUrl)
       onSubmitProps.resetForm()
       const postData = {
         name: values.planName,
         description: values.planDescription,
         price: values.planPrice,
         type: values.planType,
-        imageUrl: values.imageUrl,
-        modelUrl: values.modelUrl
-        
-        
+        imageUrl: image_api_url,
+        modelUrl: model_api_url
       };
 
       Axios.post(url, postData,  { headers: { 'Content-Type': 'application/json' }}) 
@@ -187,7 +193,7 @@ export default function App(props) {
                 // setFieldValue('lightIcon', e.target.files[0]);
             }}
           /> */}
-           <div>
+           {/* <div>
               <label ></label>
               <input className="cinput"
                 placeholder='Image URL'
@@ -199,23 +205,14 @@ export default function App(props) {
                 value={formik.values.imageUrl}
               />
               {formik.touched.imageUrl && formik.errors.imageUrl ? <div className='error'>{formik.errors.imageUrl}</div> : null}
-            </div>
+            </div> */}
 
-            <div>
-              <label ></label>
-              <input className="cinput"
-                placeholder='Model URL'
-                type='text'
-                name='modelUrl'
-                id='modelUrl'
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.modelUrl}
-              />
-              {formik.touched.modelUrl && formik.errors.modelUrl ? <div className='error'>{formik.errors.modelUrl}</div> : null}
-            </div>
+            
+         <label >Choose Plan Image:</label>
+          <input id="file" name="file" type="file" accept="image/*" value={formik.values.imageUrl} onChange={handleImage}/>
 
-          <input id="file" name="file" type="file" accept="image/*" onChange={handleFile}/>
+          <label >Choose Model(AR) Image:</label>
+          <input id="file" name="model" type="file" accept="image/*" value={formik.values.modelUrl} onChange={handleModel}/>
           <br></br>
             {/* <input type="file" onChange={event => {formik.values.file = event.target.files[0]} } /> onChange={props.handleFileUpload}*/}
             <div className="centerblock">

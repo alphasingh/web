@@ -82,11 +82,11 @@ function Content() {
     return v;
   }
 
-  function test1(s) {
-    let t=[];
-    t=s;
-    return t[0];
-  }
+  // function test1(s) {
+  //   let t=[];
+  //   t=s;
+  //   return t[0];
+  // }
 
   function test2(s1) {
     let t1=[];
@@ -98,7 +98,7 @@ function Content() {
     let t3=[];
     t3=t2;
     if ( t3[0] === "NON_VEG"){
-      let k = "NON-VEG,";
+      let k = " NON-VEG,";
       return k;
     }
     else if(t3[0] === "EGG"){
@@ -135,6 +135,11 @@ function Content() {
 
 
   }
+
+  // function handleImage(){
+  //   const data = 'R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
+  //   const Example = ({ data }) => <img src={`data:image/jpeg;base64,${data}`} />
+  // }
   return (
 
     <div>
@@ -247,16 +252,20 @@ function Content() {
           <button className="btn btn-primary filterdesign" onClick={filterResults}>Apply Filter</button>
           <div className="container-fluid" >
             <div className="row">
-              {seller.map(seller => (
+
+              {
+              
+                seller.map(seller => (
+                  
                 <div className="col-sm-4 w" >
                   <div className="card mt-4">
-                    <img className="card-img-top" src={seller.imageUrl} alt="" />
+                   <img className="card-img-top" style={{ maxHeight: "180px" }} src={seller && seller.imageUrl ? seller.imageUrl : "Images/No-image.jpg"} alt="" />
                     <div className="card-body">
                       <h4 className="card-title text-secondary">{seller.name}&nbsp;{status(seller.status)}</h4>
                       <p className="card-text text-secondary">{truncate(seller?.description, 70)}</p>
-                      <p className="card-text text-secondary"><h6><strong>Average price per person :</strong> ${seller.averagePricePerPerson}</h6></p>
-                      <p className="card-text text-secondary" ><strong>Categories available :</strong> <className style={{ color: "red"}}> {test3(seller.categories)}</className>  <className style={{ color: "green"}}>{test2(seller.categories)}</className></p>
-                      <p className="card-text text-secondary" style={{ maxHeight: "10px", marginBottom: "30px" }}><h6><strong>Cuisines available : </strong>{preparations(seller.cuisines)}</h6></p>
+                      <p className="card-text text-secondary"><h6><strong>Average price per person :</strong> {seller && seller.averagePricePerPerson ? "$"+seller.averagePricePerPerson : "N.A"}</h6></p>
+                      <p className="card-text text-secondary" ><strong>Categories available :</strong> <className style={{ color: "red"}}> {seller && seller.categories ? test3(seller.categories) : "N.A" }</className>  <className style={{ color: "green"}}>{seller && seller.categories ? test2(seller.categories) : "N.A"}</className></p>
+                      <p className="card-text text-secondary" style={{ maxHeight: "10px", marginBottom: "30px" }}><h6><strong>Cuisines available : </strong>{ seller && seller.cuisines ? preparations(seller.cuisines) : "N.A"}</h6></p>
                       <p className="card-text text-secondary" type="hidden" value={seller.id}></p>
                     </div>
                     <div className="card-footer" >
@@ -293,6 +302,8 @@ function Content() {
 
             </div>
           </section>
+
+          
         </div>
       </section>
     </div>
