@@ -9,7 +9,19 @@ import {useHistory} from 'react-router-dom'
 export default function SignUp(props) {
   const url = " https://tiffin-umbrella.herokuapp.com/post_seller";
   const[history, setHistory] = useState(useHistory());
+  const[modelUrl, setModelUrl] = useState();
 
+  const handleModel = async (e) => {
+    var image = new FormData();
+    var imagefile =  e.target.files[0];
+    var comment = "This is a Model comment";
+   image.append("image", imagefile);
+    await Axios.post("https://tiffin-umbrella.herokuapp.com/images?comment="+comment, image,  { headers: { 'Content-Type': 'multipart/form-data' }}) //'Authorization':'Client-ID 2f7124444928e3e'
+    .then(res => { if(res.status === 200){
+      console.log("Received Model url", res.data.url);
+      setModelUrl(res.data.url);
+    }
+    })}
 
   const formik = useFormik({
     initialValues: {
@@ -28,6 +40,7 @@ export default function SignUp(props) {
       onSubmitProps.resetForm()
       const postData = {
         name: values.firstName,
+        imageUrl: modelUrl,
         plans: values.plan,
         
         contact: {
@@ -216,8 +229,8 @@ export default function SignUp(props) {
               {/* <div className="text-danger">{this.state.errors.confirm_password}</div> */}
           </div>
           <br></br>
-
-            <input type="file" onChange={event => {formik.values.file = event.target.files[0]} }  />
+            <label>Choose Display Image:</label>
+          <input id="file" name="file" type="file" accept="image/*" value={formik.values.imageUrl} onChange={handleModel}/>
             <div className="centerblock">
 
               {/* <input type="checkbox" id="checkbox" className="check" />&nbsp;

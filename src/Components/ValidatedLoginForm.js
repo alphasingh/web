@@ -43,7 +43,7 @@ function ValidatedLoginForm (props) {
         //  window.location="/viewsellerorders";
           //console.log(res.data.id);
          history.push({
-           pathname: "/viewsellerorders",
+           pathname: "/sidebar",
            id: res.data.id
           });
           //return <Redirect to="/viewsellerorders" />

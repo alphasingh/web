@@ -5,6 +5,7 @@ import { useField } from 'formik';
 import './AddPlan.css';
 import CustomSelect from './CustomSelect';
 import FormData from 'form-data';
+import { Redirect, useHistory } from "react-router-dom";
 
 const options =[
   {value:'WEEKLY', label: 'WEEKLY'},
@@ -16,7 +17,9 @@ export default function App(props) {
 
   const[imageUrl, setImageUrl]= useState();
   const[modelUrl, setModelUrl] = useState();
-  const url = " https://tiffin-umbrella.herokuapp.com/sellers/60db667a8247d42edb05cbae/plans";
+  const [history, setHistory]= useState(useHistory());
+  const serialID = window.localStorage.getItem("sellerid");
+  const url = " https://tiffin-umbrella.herokuapp.com/sellers/"+serialID+"/plans";
 
 
   const handleImage = async (e) => {
@@ -72,7 +75,11 @@ export default function App(props) {
 
       Axios.post(url, postData,  { headers: { 'Content-Type': 'application/json' }}) 
         .then(res => { if(res.status === 200){
-          console.log("Success!!")
+          console.log("Success!!");
+          alert("Your Plan is added successfully")
+          history.push({
+            pathname:'/sidebar'
+          })
         }console.log(res.values) })
         .catch(errors => { console.log(errors) })
 

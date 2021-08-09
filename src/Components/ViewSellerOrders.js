@@ -32,7 +32,7 @@ const columns = [
   {
     field: "address",
     headerName: "Addresss",
-    width: 150,
+    width: 700,
     editable: true
   },
   {
@@ -64,8 +64,9 @@ export default function ViewSellerOrders(props) {
 
   const [data, setData] = useState([]);
   // const sellerid = window.localStorage.getItem("sellerid");
-  console.log("Seller ID received", props.location.id);
-  const [serialID, setSerialID] = useState(props.location.id);
+  // console.log("Seller ID received", props.location.id);
+  const serialID = window.localStorage.getItem("sellerid");
+  console.log("Serial ID", serialID);
   const url = 'https://tiffin-umbrella.herokuapp.com/sellers/'+serialID+'/orders';
 
   useEffect(() => {
@@ -93,7 +94,7 @@ export default function ViewSellerOrders(props) {
           lastname: dataelement.buyer.lastName,
           phone: dataelement.buyer.contact.phone,
           email: dataelement.buyer.contact.email,
-          address: JSON.stringify(dataelement.buyer.contact.address.line1 + dataelement.buyer.contact.address.line2 + dataelement.buyer.contact.address.city + dataelement.buyer.contact.address.zip),
+          address: JSON.stringify(dataelement.buyer.contact.address.line1  + dataelement.buyer.contact.address.zip),
           plan: dataelement.plan.name,
           planprice: dataelement.plan.price
         }))}

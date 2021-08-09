@@ -12,12 +12,16 @@ import SellerDashboard from './Components/SellerDashboard';
 import ViewSellerOrders from './Components/ViewSellerOrders';
 import SignUp from './Components/Sign_Up';
 import AddPlan from './Components/AddPlan';
+import SideBar from './Components/SideBar';
 function App() {
+
   return (
 
      <React.Fragment>
+        
        <BrowserRouter>
         <div> 
+        
           <Header/>
             
               <Switch>
@@ -31,9 +35,11 @@ function App() {
                    <Route path="/signup" component={SignUp}/>
                    <Route path="/addplan" component={AddPlan}/>
                    
-
+                    <Route path="/sidebar" exact component={SideBar} />
+                   
               </Switch>
           <Footer/>
+         
         </div>
        </BrowserRouter>
     </React.Fragment>
